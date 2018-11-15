@@ -1,0 +1,39 @@
+import java.util.Map;
+import java.util.Set;
+import java.util.TreeMap;
+
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+
+public class writeExcelTest {
+	public static void main(String[] args) {
+		String psuid[] = { "gensler", "hitashi", "webex", "nomiko" };
+		String role[] = { "Full access user", "client Admin", "internal SI", "Internal FI" };
+		Map<Integer, Object[]> data = new TreeMap<Integer, Object[]>();
+		for (int i = 0; i < psuid.length; i++) {
+			data.put(1, new Object[] { "ID", "NAME", "ROLE", "LASTNAME", "PSUID" });
+			data.put(i+2, new Object[] { 1, "Amit", role[i], "Shukla", psuid[i] });
+			/*data.put("3", new Object[] { 2, "Lokesh", role[i], "Gupta", psuid[i] });
+			data.put("4", new Object[] { 3, "John", role[i], "Adwards", psuid[i] });
+			data.put("5", new Object[] { 4, "Brian", role[i], "Schultz", psuid[i] });*/
+		}
+		// Iterate over data and write to sheet
+		Set<Integer> keyset = data.keySet();
+		int rownum = 0;
+		for (Integer key : keyset) {
+			// Row row = sheet.createRow(rownum++);
+			Object[] objArr = data.get(key);
+			int cellnum = 0;
+			for (Object obj : objArr) {
+				// Cell cell = row.createCell(cellnum++);
+				if (obj instanceof String)
+					System.out.println(obj);
+				else if (obj instanceof Integer)
+					System.out.println(obj);
+			}
+		}
+
+	}
+}
