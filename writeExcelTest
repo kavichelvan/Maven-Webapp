@@ -11,13 +11,20 @@ public class writeExcelTest {
 	public static void main(String[] args) {
 		String psuid[] = { "gensler", "hitashi", "webex", "nomiko" };
 		String role[] = { "Full access user", "client Admin", "internal SI", "Internal FI" };
+		String id[] = { "12", "32", "43" };
+		
+		int k=1;
 		Map<Integer, Object[]> data = new TreeMap<Integer, Object[]>();
-		for (int i = 0; i < psuid.length; i++) {
-			data.put(1, new Object[] { "ID", "NAME", "ROLE", "LASTNAME", "PSUID" });
-			data.put(i+2, new Object[] { 1, "Amit", role[i], "Shukla", psuid[i] });
-			/*data.put("3", new Object[] { 2, "Lokesh", role[i], "Gupta", psuid[i] });
-			data.put("4", new Object[] { 3, "John", role[i], "Adwards", psuid[i] });
-			data.put("5", new Object[] { 4, "Brian", role[i], "Schultz", psuid[i] });*/
+		data.put(k++, new Object[] { "ID", "NAME", "ROLE", "LASTNAME", "PSUID" });
+		for (int j = 0; j < id.length; j++) {
+			for (int i = 0; i < psuid.length; i++) {
+				data.put(k++, new Object[] { id[j], "Amit", role[i], "Shukla", psuid[i] });
+				/*
+				 * data.put("3", new Object[] { 2, "Lokesh", role[i], "Gupta", psuid[i] });
+				 * data.put("4", new Object[] { 3, "John", role[i], "Adwards", psuid[i] });
+				 * data.put("5", new Object[] { 4, "Brian", role[i], "Schultz", psuid[i] });
+				 */
+			}
 		}
 		// Iterate over data and write to sheet
 		Set<Integer> keyset = data.keySet();
