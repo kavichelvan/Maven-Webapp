@@ -15,12 +15,12 @@ public class writeExcelTest {
 	public static void main(String[] args) {
 		String psuid[] = { "gensler", "hitashi", "webex", "nomiko" };
 		String role[] = { "Full access user", "client Admin", "internal SI", "Internal FI" };
-		String id[] = { "12", "32", "43" };
+		String id[] = { "12", "32", "43" }; //we will get list of POJO objects from the excel
 		
 		int k=1;
 		Map<Integer, Object[]> data = new TreeMap<Integer, Object[]>();
 		data.put(k++, new Object[] { "ID", "NAME", "ROLE", "LASTNAME", "PSUID" });
-		for (int j = 0; j < id.length; j++) {
+		for (int j = 0; j < id.length; j++) { //instead of iterating id array, iterate the list of POJO objects
 			for (int i = 0; i < psuid.length; i++) {
 				data.put(k++, new Object[] { id[j], "Amit", role[i], "Shukla", psuid[i] });
 				/*
